@@ -1,0 +1,5 @@
+Server:		192.168.8.1
+Address:	192.168.8.1#53
+
+Non-authoritative answer:
+150.8.168.192.in-addr.arpa	name = MacBook-Pro.
