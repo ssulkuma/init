@@ -1,0 +1,4 @@
+Graphic session:
+After creating a new user logout of current user -> switch user -> insert new user login and password.
+SSH session:
+Type command 'ssh new_username@vm_ip_address' in terminal on host machine.
