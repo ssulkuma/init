@@ -4,13 +4,18 @@ ACTIVE_USERS=$(cat /etc/passwd | grep 'home' | awk -F ':' '{print $1}')
 echo "List of active users:\n$ACTIVE_USERS"
 echo "Choose & type an active username to delete."
 read -r USERNAME
+if [ $(whoami) = ${USERNAME} ]
+then
+	echo "WARNING! You are currently logged in as ${USERNAME}. Deleting this user might cause a problem."
+fi
 echo "Are you certain you want to delete username? [yes/no]"
 read -r ANSWER
 if [ "${ANSWER}" = "yes" ] 
 then
-	sudo userdel -rf ${USERNAME}
+	if sudo userdel -rf ${USERNAME}
+	then
+		echo "${USERNAME} has been deleted successfully."
+	fi
 else
 	echo "${USERNAME} was not deleted."
-	exit 0
 fi
-echo "${USERNAME} has been deleted successfully."
